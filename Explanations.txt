@@ -1,0 +1,18 @@
+The problems in the data were that the data in the Has_car column was largely incorrect, as well as it being a break of 
+the rules of data normalization, since the two columns has_car and car_color could be vulnerable to update anomalies.
+In addition, in the friends table there were friendships with only one or no people, which is a data failure
+since it is impossible.
+
+The changes I made was removing the has_car column, since it is flawed and unnecessary, and creating a new table that holds the car_colors
+along with a foreign key of the id of the student who's car it is. That way there are no 'null' entries in the table. 
+In addition, I removed all the incomplete friendships from the friends table so the table would be fully useful.
+
+The constraints I added were that no entry can be null, since with my updated tables there is no need for it.
+To all the numerical values I made them unsigned, since none of them should be able to be negative.
+The id of each table is of course the Primary Key (or foreign key in car_colors) and so is unique, and also the id_card column 
+in the students table must be unique to each student. All the other columns could be shared by a few students, and so are not unique.
+
+I decided to make the car-colors table dependent on the students table since there is a has-a relationship 
+between an entity of the students table and the car_colors table. 
+The friends table, however, has its own primary key and is independent of the students table- but they are related,
+since each entity in the friends table points to two entities in the students table. 
